@@ -17,7 +17,7 @@ toilet -w 90 -f term -F border 'This software is provided "as is" without any wa
 if [ -f /storage/accepted ] || [ -n "$AUTOACCEPT" ]; then
   fun_echo "/accepted file detected. Previously accepted."
 else
-  fun_echo "Press 'y' to agree, any other key to exit"
+  fun_echo "put a file called 'accepted' in /storage/"
 
   read -n 1 -s -r input  # Read a single character in silent mode
 
@@ -32,7 +32,6 @@ touch /storage/accepted
 
 toilet ComfyUI Magic -w 90 -f pagga -F border:
 
-fun_echo "Proudly sponsored by MineTheFutr.com"
 
 
 mkdir -p /storage/shared_models/
@@ -63,6 +62,7 @@ fun_echo "Checking Model Downloads..."
 
 # Loop over the files and download them
 yq e '.files[] | [.path, .url] | join(" ")' $yaml | while read -r line; do
+  fun_echo "downloading: $url"
   # Read path and url into separate variables
   read -r path url <<< "$line"
 
@@ -110,22 +110,6 @@ yq e '.custom_nodes[]' $yaml | while read -r repo; do
   fi
 done
 
-if [ -z "${SUPPLIER_ID}" ]; then
-  fun_echo "If you'd like to earn during your idle GPU time, go to MineTheFutr.com"
+fun_echo "Starting ComfyUI..."
+cd /storage/ComfyUI && python main.py --listen 0.0.0.0 --extra-model-paths-config /extra_model_paths.yml --disable-xformers
 
-  fun_echo "Starting ComfyUI..."
-  cd /storage/ComfyUI && python main.py --listen 0.0.0.0 --extra-model-paths-config /extra_model_paths.yml --disable-xformers
-else
-  fun_echo "FUTR SUPPLIER_ID Detected."
-  fun_echo "Connecting to MineTheFutr.com with ID ${SUPPLIER_ID}"
-
-  while true; do
-    if [ "${PRODUCTION}" != false ]; then
-      fun_echo "Updating heartbeat.js before starting..."
-      wget --no-cache -O ~/heartbeat.js https://raw.githubusercontent.com/FUTRlabs/ComfyUI-Magic/main/heartbeat.js
-    fi
-
-    (cd ~/ && node ~/heartbeat.js) || true 
-    pkill -9 python
-  done
-fi

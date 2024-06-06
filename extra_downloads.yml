@@ -66,4 +66,4 @@ files:
   - path: /storage/ComfyUI/models/checkpoints/turbovisionxlSuperFastXLBasedOnNew_alphaV0101Bakedvae.safetensors
     url: https://civitai.com/api/download/models/242733
 custom_nodes:
-  #  - https://github.com/ltdrdata/ComfyUI-Manager.git
+    - https://github.com/ltdrdata/ComfyUI-Manager.git
