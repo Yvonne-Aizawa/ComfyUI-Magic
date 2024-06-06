@@ -65,5 +65,17 @@ files:
     url: https://huggingface.co/a460902075/control_openpose.pth/resolve/main/GFPGANv1.4.pth?download=true
   - path: /storage/ComfyUI/models/checkpoints/turbovisionxlSuperFastXLBasedOnNew_alphaV0101Bakedvae.safetensors
     url: https://civitai.com/api/download/models/242733
+  - path: /storage/ComfyUI/models/insightface/inswapper_128.onnx
+    url: https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx?download=true
+  - path: /storage/shared_models/upscale_models/1x_ArtClarity.pth
+    url: https://huggingface.co/libsgo/1x_ArtClarity.pth/resolve/main/1x_ArtClarity.pth?download=true
+  - path: /storage/shared_models/upscale_models/4xLSDIRCompactv2.pth
+    url: https://raw.githubusercontent.com/Phhofm/models/main/4xLSDIR/4xLSDIR.pth
+  - path: /storage/shared_models/upscale_models/4x-Rybu.pth
+    url: https://objectstorage.us-phoenix-1.oraclecloud.com/n/ax6ygfvpvzka/b/open-modeldb-files/o/4x-Rybu.pth
+  - path: /storage/ComfyUI/models/upscale_models/4xPSNR.pth
+    url: https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x-UltraSharp.pth?download=true
+  - path: /stgorage/workspace/ComfyUI/models/upscale_models/4xPSNR.pth
+    url: https://huggingface.co/LittleApple-fp16/EasyNegative/resolve/main/EasyNegative.safetensors?download=true
 custom_nodes:
     - https://github.com/ltdrdata/ComfyUI-Manager.git
